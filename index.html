@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>FlashWord</title>
+    <meta charset="utf-8" />
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+
+    <link href="styles.css" rel="stylesheet"></link>
+  </head>
+  <body>
+
+    <div id="app" v-cloak>
+      <h1>FlashWord</h1>
+
+      <div id="cards">
+        <!--the v-bind is adding the class css correct to this dive when the word is correct-->
+        <div
+          class="card"
+          v-for="word in shuffledWords"
+          v-bind:class="{ correct: word.correct }">
+          <p class="word">{{ word.word_a }}</p>
+          <input v-if="!word.correct" type="text" v-model="word.answer" v-on:keyup.enter="checkAnswer(word)">
+          <p v-else class="correctAnswer">{{ word.answer }}</p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
