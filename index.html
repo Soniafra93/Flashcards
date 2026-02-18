@@ -14,6 +14,9 @@
     <div id="app" v-cloak>
       <h1>FlashWord</h1>
 
+      <p v-if="completed" id="completed">Good job, you completed all the words!</p>
+      <p v-else id="correctCount">You have answered {{ correctCount}} out of {{ wordCount }}</p>
+
       <div id="cards">
         <!--the v-bind is adding the class css correct to this dive when the word is correct-->
         <div
